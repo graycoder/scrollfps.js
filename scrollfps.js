@@ -1,26 +1,31 @@
-/* ========================================================================
- * scrollfps.js - v0.1.0 - 2013-12-02
+/* ==========================================================
+ * scrollfps.js - v0.1.1 - 2013-12-03
  * https://github.com/graycoder/scrollfps.js
- * ========================================================================
- *
+ * ==========================================================
  * Copyright (c) 2013 Paul Pechenin <paul.pechenin@gmail.com>
  * Licensed under the MIT license
- * ======================================================================== */
+ * ========================================================== */
 
-+function($, elem, pointerEventsClass) { "use strict";
++function($, pointerEventsClass) { "use strict";
 
-  var $elem = $(elem), timer
+  $(function(){
+    var $target = $('[data-scrollfps]')
 
-  $(window).on('scroll', function() {
-    clearTimeout(timer)
+    if ($target.length) {
+      var timer
 
-    if(!$elem.hasClass(pointerEventsClass)) {
-      $elem.addClass(pointerEventsClass)
+      $(window).on('scroll', function() {
+        clearTimeout(timer)
+
+        if(!$target.hasClass(pointerEventsClass)) {
+          $target.addClass(pointerEventsClass)
+        }
+
+        timer = setTimeout(function() {
+          $target.removeClass(pointerEventsClass)
+        }, 100);
+      })
     }
-
-    timer = setTimeout(function() {
-      $elem.removeClass(pointerEventsClass)
-    }, 100);
   })
 
-} (window.jQuery, 'body', 'disable-hover');
+}(window.jQuery, 'disable-hover');

@@ -6,7 +6,7 @@
  * Licensed under the MIT license
  * ========================================================== */
 
-+function(win, doc, body) { "use strict";
++function(win, doc) { "use strict";
 
   var support = (function() {
     var element = doc.createElement('x')
@@ -14,10 +14,12 @@
     return element.style.pointerEvents === 'auto'
   }())
 
-  if (!support || body.dataset.scrollfps === undefined)
-    return
-
   doc.addEventListener('DOMContentLoaded', function() {
+    var body = doc.body
+
+    if (!support || body.dataset.scrollfps === undefined)
+      return
+
     var cover = doc.createElement('div'),
         scrollStarted = false,
         clicked = false,
@@ -90,4 +92,4 @@
     element.dispatchEvent(event)
   }
 
-}(window, document, document.body);
+}(window, document);

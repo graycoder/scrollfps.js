@@ -1,19 +1,20 @@
 scrollfps.js
 ============
 
-Ingenious solution proposed Christian Schaefer.
-
-Increases FPS on scrolling page, by disabling mouse events via [pointer-events](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events) css directive
+A little library that could make your site scroll faster.
 
 ## Setup ##
-Include scrollfps.js script and scrollfps.css styles in your page
+Include scrollfps.js script in your page
 
 ## Basic Usage ##
-Just add ```data-scrollfps``` to ```<body>``` tag to globally disable
-mouse events on scrolling
+Just add ```data-scrollfps``` to ```<body>``` tag
 
-## Depends ##
-* jQuery
-
-## Demo ##
-[Demo link](http://jsbin.com/oNiVUYe/5/quiet)
+for example
+```
+<html>
+  ...
+  <body data-scrollfps>
+  ...
+  </body>
+</html>
+```

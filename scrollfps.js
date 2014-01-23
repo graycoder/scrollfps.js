@@ -14,10 +14,13 @@
     return element.style.pointerEvents === 'auto'
   }())
 
+  if (!support)
+    return
+
   doc.addEventListener('DOMContentLoaded', function() {
     var body = doc.body
 
-    if (!support || body.dataset.scrollfps === undefined)
+    if (body.dataset.scrollfps === undefined)
       return
 
     var cover = doc.createElement('div'),

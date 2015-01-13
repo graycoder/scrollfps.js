@@ -19,7 +19,7 @@ module.exports = function() {
   if (!support)
     return
 
-  doc.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     var body = document.body
 
     if (body.dataset.scrollfps === undefined)

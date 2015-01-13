@@ -1,10 +1,12 @@
 /* ==========================================================
- * scrollfps.js - v0.2.0 - 2014-01-21
+ * scrollfps.js - v0.3.0 - 2014-01-21
  * https://github.com/graycoder/scrollfps.js
  * ==========================================================
  * Copyright (c) 2013 Paul Pechenin <paul.pechenin@gmail.com>
  * Licensed under the MIT license
  * ========================================================== */
+
+'use strict';
 
 var support = (function() {
   var element = document.createElement('x')
@@ -12,14 +14,12 @@ var support = (function() {
   return element.style.pointerEvents === 'auto'
 }())
 
-var domready = require('domready')
-
-module.exports = (function() {
+module.exports = function() {
 
   if (!support)
     return
 
-  domready(function() {
+  doc.addEventListener('DOMContentLoaded', function() {
     var body = document.body
 
     if (body.dataset.scrollfps === undefined)
@@ -56,6 +56,7 @@ module.exports = (function() {
       timer = setTimeout(function() {
         cover.style.pointerEvents = 'none'
         scrollStarted = false
+
         if (clicked) {
           dispatchClick(pos)
           clicked = false
@@ -70,10 +71,10 @@ module.exports = (function() {
         clicked = true
       }
     }, false)
-  })
+  }, false)
 
   function dispatchClick(pos) {
-    var event = document.createEvent('MouseEvent'),
+    var event   = document.createEvent('MouseEvent'),
         element = document.elementFromPoint(pos.x, pos.y)
 
     event.initMouseEvent(
@@ -96,4 +97,4 @@ module.exports = (function() {
     event.synthetic = true
     element.dispatchEvent(event)
   }
-})()
+}

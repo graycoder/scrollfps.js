@@ -138,35 +138,35 @@ require.define = function (name, exports) {
     exports: exports
   };
 };
-require.register("scrollfps", function (exports, module) {
+require.register("scrollfps.js", function (exports, module) {
 /* ==========================================================
- * scrollfps.js - v0.2.0 - 2014-01-21
+ * scrollfps.js - v0.3.0 - 2014-01-21
  * https://github.com/graycoder/scrollfps.js
  * ==========================================================
  * Copyright (c) 2013 Paul Pechenin <paul.pechenin@gmail.com>
  * Licensed under the MIT license
  * ========================================================== */
 
+'use strict';
+
 var support = (function() {
-  var element = doc.createElement('x')
+  var element = document.createElement('x')
   element.style.cssText = 'pointer-events:auto'
   return element.style.pointerEvents === 'auto'
 }())
 
-var domready = require('domready')
+module.exports = function() {
 
-module.exports = (function(doc, win) {
+  if (!support)
+    return
 
-    if (!support)
-      return
-
-    doc.addEventListener('DOMContentLoaded', function() {
-    var body = doc.body
+  doc.addEventListener('DOMContentLoaded', function() {
+    var body = document.body
 
     if (body.dataset.scrollfps === undefined)
       return
 
-    var cover = doc.createElement('div'),
+    var cover = document.createElement('div'),
         scrollStarted = false,
         clicked = false,
         pos = {x: 0, y: 0},
@@ -187,7 +187,7 @@ module.exports = (function(doc, win) {
 
     body.appendChild(cover)
 
-    win.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function() {
       if (!scrollStarted) {
         cover.style.pointerEvents = 'auto'
         scrollStarted = true
@@ -197,6 +197,7 @@ module.exports = (function(doc, win) {
       timer = setTimeout(function() {
         cover.style.pointerEvents = 'none'
         scrollStarted = false
+
         if (clicked) {
           dispatchClick(pos)
           clicked = false
@@ -204,7 +205,7 @@ module.exports = (function(doc, win) {
       }, 200)
     }, false)
 
-    doc.addEventListener('click', function(e) {
+    document.addEventListener('click', function(e) {
       if (e.target === cover && !e.synthetic) {
         pos.x = e.clientX
         pos.y = e.clientY
@@ -214,8 +215,8 @@ module.exports = (function(doc, win) {
   }, false)
 
   function dispatchClick(pos) {
-    var event = doc.createEvent('MouseEvent'),
-        element = doc.elementFromPoint(pos.x, pos.y)
+    var event   = document.createEvent('MouseEvent'),
+        element = document.elementFromPoint(pos.x, pos.y)
 
     event.initMouseEvent(
       'click',  // type
@@ -237,14 +238,14 @@ module.exports = (function(doc, win) {
     event.synthetic = true
     element.dispatchEvent(event)
   }
-})()
+}
 });
 
 if (typeof exports == "object") {
-  module.exports = require("scrollfps");
+  module.exports = require("scrollfps.js");
 } else if (typeof define == "function" && define.amd) {
-  define("scrollfps", [], function(){ return require("scrollfps"); });
+  define("scrollfps", [], function(){ return require("scrollfps.js"); });
 } else {
-  (this || window)["scrollfps"] = require("scrollfps");
+  (this || window)["scrollfps"] = require("scrollfps.js");
 }
 })()

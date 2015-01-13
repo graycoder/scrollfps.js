@@ -14,10 +14,9 @@ A little library that could make your site scroll faster.
     <script src='scrollfps.min.js'></script>
 
 
-## Basic Usage ##
-Just add ```data-scrollfps``` to ```<body>``` tag
+## Usage ##
+* Add ```data-scrollfps``` to ```<body>``` tag.
 
-for example
 ```html
 <html>
   ...
@@ -25,4 +24,14 @@ for example
   ...
   </body>
 </html>
+```
+
+* Call scrollfps inside your domready handler
+```js
+var scrollps = require('scrollfps.js'),
+    domready = require('domready')
+
+domready(function() {
+  scrollfps();
+})
 ```

@@ -3,18 +3,35 @@ scrollfps.js
 
 A little library that could make your site scroll faster.
 
-## Setup ##
-Include scrollfps.js script in your page
+## Installation
 
-## Basic Usage ##
-Just add ```data-scrollfps``` to ```<body>``` tag
+  With [component(1)](http://component.io):
 
-for example
-```
+    $ component install strangeworks/scrollfps.js
+
+  With a stand-alone build
+
+    <script src='scrollfps.min.js'></script>
+
+
+## Usage ##
+* Add ```data-scrollfps``` to ```<body>``` tag.
+
+```html
 <html>
   ...
   <body data-scrollfps>
   ...
   </body>
 </html>
+```
+
+* Call scrollfps inside your domready handler
+```js
+var scrollps = require('scrollfps.js'),
+    domready = require('domready')
+
+domready(function() {
+  scrollfps();
+})
 ```

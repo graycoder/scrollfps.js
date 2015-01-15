@@ -1,0 +1,16 @@
+{
+  "name": "scrollfps.js",
+  "repo": "strangeworks/scrollfps.js",
+  "description": "A little library that could make your site scroll faster.",
+  "version": "0.3.0",
+  "license": "MIT",
+  "keywords": [
+    "scroll",
+    "performance"
+  ],
+  "dependencies": {},
+  "development": {},
+  "scripts": [
+    "index.js"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "scrollfps.js",
+  "version": "0.3.0",
+  "description": "A little library that could make your site scroll faster.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strangeworks/scrollfps.js.git"
+  },
+  "keywords": [
+    "scroll",
+    "performance"
+  ],
+  "author": "Paul Pechenin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strangeworks/scrollfps.js/issues"
+  },
+  "homepage": "https://github.com/strangeworks/scrollfps.js"
+}
